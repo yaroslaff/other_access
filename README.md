@@ -21,6 +21,9 @@ Lets use /etc/shadow for example:
 ~~~
 
 ~~~python
+import os
+from other_access import oaccess
+
 # user root can read and write
 assert(oaccess('/etc/shadow', os.R_OK | os.W_OK, 'root') == True)
 
