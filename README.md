@@ -13,7 +13,7 @@ other_access does not supports filesystem ACL
 
 `other_access(path, mode, uid, gids=None)` - main function. similar to [os.access()](https://docs.python.org/3/library/os.html#os.access), but checks for other user (`uid`) and list of groups (`gids`). User and group id's are integer (not names).
 
-```python oaccess(path, mode, user, groups)` - wrapper for other_access which takes names for user/groups, converts it to numerical uid/gids and calls other_access(). If `groups` is `None`, oaccess will use all groups for this user. (specify only main group or empty list to override this)
+```oaccess(path, mode, user, groups)` - wrapper for other_access which takes names for user/groups, converts it to numerical uid/gids and calls other_access(). If `groups` is `None`, oaccess will use all groups for this user. (specify only main group or empty list to override this)
 
 
 ## Examples
