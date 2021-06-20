@@ -5,9 +5,11 @@ import pwd
 import grp
 
 def other_access(path, mode, uid, gids=None):
-    
+
+
     if gids is None:
         gids = list()
+    
     try:
         stat = os.stat(path)
     except FileNotFoundError:
@@ -45,7 +47,8 @@ def oaccess(path, mode, user, groups=None):
     if groups is not None:
         gids = [grp.getgrnam(group).gr_gid for group in groups]
     else:
-        gids = [pwd.getpwnam(user).pw_gid]
+        gids = [g.gr_gid for g in grp.getgrall() if user in g.gr_mem]
+        gids.append(pwd.getpwnam(user).pw_gid)
 
     return other_access(path, mode, uid, gids)
 
