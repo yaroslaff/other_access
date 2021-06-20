@@ -7,7 +7,7 @@ While [os.access()](https://docs.python.org/3/library/os.html#os.access) checks 
 For example, root user can use `other_access.oaccess(path, os.R_OK, 'www-data')` to ensure files are readable by www-data user.
 
 ## Limitation
-otheraccess does not supports filesystem ACL
+other_access does not supports filesystem ACL
 
 ## Usage
 
