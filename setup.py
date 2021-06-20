@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='other_access',
-    version='0.0.3',
+    version='0.0.4',
     packages=['other_access'],
     license='none',
     description='os.access() alternative which can check access for other users',

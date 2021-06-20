@@ -10,8 +10,11 @@ def other_access(path, mode, uid, gids=None):
     if gids is None:
         gids = list()
     
+
+    rpath = os.path.realpath(path)
+
     try:
-        stat = os.stat(path)
+        stat = os.stat(rpath)
     except FileNotFoundError:
         return False
     
