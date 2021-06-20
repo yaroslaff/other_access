@@ -9,6 +9,11 @@ For example, root user can use `other_access.oaccess(path, os.R_OK, 'www-data')`
 ## Limitation
 other_access does not supports filesystem ACL.
 
+## Install
+~~~
+pip3 install other-access
+~~~
+
 ## Usage
 
 `other_access(path, mode, uid, gids=None)` - main function. similar to [os.access()](https://docs.python.org/3/library/os.html#os.access), but checks for other user (`uid`) and list of groups (`gids`). User and group id's are integer (not names).
