@@ -7,7 +7,7 @@ While [os.access()](https://docs.python.org/3/library/os.html#os.access) checks 
 For example, root user can use `other_access.oaccess(path, os.R_OK, 'www-data')` to ensure files are readable by www-data user.
 
 ## Limitation
-other_access does not supports filesystem ACL
+other_access does not supports filesystem ACL.
 
 ## Usage
 
@@ -27,12 +27,12 @@ import os
 from other_access import oaccess
 
 # user root can read and write
-assert(oaccess('/etc/shadow', os.R_OK | os.W_OK, 'root') == True)
+assert oaccess('/etc/shadow', os.R_OK | os.W_OK, 'root') == True
 
 # group shadow can read
-assert(oaccess('/etc/shadow', os.R_OK, 'nobody', ['shadow']) == True)
+assert oaccess('/etc/shadow', os.R_OK, 'nobody', ['shadow']) == True
 
 # Other can check existence of file, but cannot read
-assert(oaccess('/etc/shadow', os.F_OK, 'nobody') == True)
-assert(oaccess('/etc/shadow', os.R_OK, 'nobody') == False)
+assert oaccess('/etc/shadow', os.F_OK, 'nobody') == True
+assert oaccess('/etc/shadow', os.R_OK, 'nobody') == False
 ~~~
