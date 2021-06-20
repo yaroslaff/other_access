@@ -1,8 +1,10 @@
 # other_access
 
-other_access is more flexible implementation of [os.access()](https://docs.python.org/3/library/os.html#os.access) which can check access for other users. 
+`other_access` is more flexible implementation of [os.access()](https://docs.python.org/3/library/os.html#os.access).
 
-For example, root user can use `other_access.other_access(path, 'www-data')` to ensure files are readable by www-data user.
+While [os.access()](https://docs.python.org/3/library/os.html#os.access) checks access for current user only, `other_access` / `oaccess` can check access for other users/groups. In other words, `other_access` will return same result, no matter which user runs it (Supposing current user can [os.stat()](https://docs.python.org/3/library/os.html#os.stat) that file).
+
+For example, root user can use `other_access.oaccess(path, os.R_OK, 'www-data')` to ensure files are readable by www-data user.
 
 ## Limitation
 otheraccess does not supports filesystem ACL
