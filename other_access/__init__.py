@@ -3,7 +3,7 @@
 import os
 import pwd
 import grp
-import stat
+from stat import S_IRWXU, S_IRWXG, S_IRWXO
 
 def other_access(path, mode, uid, gids=None):
 
@@ -28,14 +28,14 @@ def other_access(path, mode, uid, gids=None):
         return True
 
     if stat.st_uid == uid:
-        umode = (stat.st_mode & stat.S_IRWXU) >> 6
+        umode = (stat.st_mode & S_IRWXU) >> 6
         return bool(mode & umode)
 
     if stat.st_gid in gids:
-        gmode = (stat.st_mode & stat.S_IRWXG) >> 3
+        gmode = (stat.st_mode & S_IRWXG) >> 3
         return bool(mode & gmode)
 
-    omode = stat.st_mode & stat.S_IRWXO
+    omode = stat.st_mode & S_IRWXO
     return bool(mode & omode)
 
 
